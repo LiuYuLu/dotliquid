@@ -5,7 +5,6 @@
     <AssemblyTitle>DotLiquid</AssemblyTitle>
     <NeutralLanguage>en-US</NeutralLanguage>
     <Authors>Tim Jones;Alessandro Petrelli</Authors>
-    <TargetFrameworks>netstandard1.3;netstandard2.0;net45</TargetFrameworks>
     <AssemblyName>DotLiquid</AssemblyName>
     <AssemblyOriginatorKeyFile>../Formosatek-OpenSource.snk</AssemblyOriginatorKeyFile>
     <SignAssembly>true</SignAssembly>
@@ -29,6 +28,7 @@
     <DebugType>full</DebugType>
     <DebugSymbols>True</DebugSymbols>
       <DocumentationFile>bin\Debug\$(TargetFramework)\DotLiquid.xml</DocumentationFile>
+      <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>

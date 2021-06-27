@@ -14,11 +14,26 @@ namespace DotLiquid
         public static readonly string ArgumentSeparator = R.Q(@",");
         public static readonly string FilterArgumentSeparator = R.Q(@":");
         public static readonly string VariableAttributeSeparator = R.Q(@".");
+        /// <summary>
+        /// Tag开始{%, 正则：(?-mix:\{\%)
+        /// </summary>
         public static readonly string TagStart = R.Q(@"\{\%");
+        /// <summary>
+        /// Tag结束%}, 正则：(?-mix:\%\})
+        /// </summary>
         public static readonly string TagEnd = R.Q(@"\%\}");
+        /// <summary>
+        ///
+        /// </summary>
         public static readonly string VariableSignature = R.Q(@"\(?[\w\-\.\[\]]\)?");
         public static readonly string VariableSegment = R.Q(@"[\w\-]");
+        /// <summary>
+        /// 对象开始{{, 正则：(?-mix:\{\{)
+        /// </summary>
         public static readonly string VariableStart = R.Q(@"\{\{");
+        /// <summary>
+        /// 对象结束}}, 正则：(?-mix:\}\})
+        /// </summary>
         public static readonly string VariableEnd = R.Q(@"\}\}");
         public static readonly string VariableIncompleteEnd = R.Q(@"\}\}?");
         public static readonly string QuotedString = R.Q(@"""[^""]*""|'[^']*'");
@@ -30,6 +45,10 @@ namespace DotLiquid
         public static readonly string TemplateParser = string.Format(R.Q(@"({0}|{1})"), PartialTemplateParser, AnyStartingTag);
         public static readonly string VariableParser = string.Format(R.Q(@"\[[^\]]+\]|{0}+\??"), VariableSegment);
         public static readonly string LiteralShorthand = R.Q(@"^(?:\{\{\{\s?)(.*?)(?:\s*\}\}\})$");
+
+        /// <summary>
+        /// 匹配{# xx #}的正则表达式
+        /// </summary>
         public static readonly string CommentShorthand = R.Q(@"^(?:\{\s?\#\s?)(.*?)(?:\s*\#\s?\})$");
         public static bool UseRubyDateFormat = false;
 

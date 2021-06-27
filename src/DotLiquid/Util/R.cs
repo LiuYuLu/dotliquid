@@ -7,11 +7,22 @@ namespace DotLiquid.Util
 {
     public static class R
     {
+        /// <summary>
+        /// 使用正则的模式修正符 (?-mix:
+        /// </summary>
+        /// <param name="regex"></param>
+        /// <returns></returns>
         public static string Q(string regex)
         {
             return string.Format("(?-mix:{0})", regex);
         }
 
+        /// <summary>
+        /// 使用String.Format拼接正则表达式并且输出正则对象
+        /// </summary>
+        /// <param name="format"></param>
+        /// <param name="args"></param>
+        /// <returns></returns>
         public static Regex B(string format, params string[] args)
         {
             return C(string.Format(format, args));

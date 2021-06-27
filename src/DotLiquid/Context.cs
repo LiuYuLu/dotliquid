@@ -18,12 +18,33 @@ namespace DotLiquid
     /// </summary>
     public class Context
     {
+        /// <summary>
+        /// 匹配单引号字符串
+        /// </summary>
         private static readonly Regex SingleQuotedRegex = R.C(R.Q(@"^'(.*)'$"));
+        /// <summary>
+        /// 匹配双引号字符串
+        /// </summary>
         private static readonly Regex DoubleQuotedRegex = R.C(R.Q(@"^""(.*)""$"));
+        /// <summary>
+        /// 匹配数字 可加+-
+        /// </summary>
         private static readonly Regex IntegerRegex = R.C(R.Q(@"^([+-]?\d+)$"));
+        /// <summary>
+        /// 匹配使用..间隔的两个字符串
+        /// </summary>
         private static readonly Regex RangeRegex = R.C(R.Q(@"^\((\S+)\.\.(\S+)\)$"));
+        /// <summary>
+        /// 匹配数字，浮点小数，逗号分割也行
+        /// </summary>
         private static readonly Regex NumericRegex = R.C(R.Q(@"^([+-]?\d[\d\.|\,]+)$"));
+        /// <summary>
+        /// 匹配中括号之间的内容
+        /// </summary>
         private static readonly Regex SquareBracketedRegex = R.C(R.Q(@"^\[(.*)\]$"));
+        /// <summary>
+        ///
+        /// </summary>
         private static readonly Regex VariableParserRegex = R.C(Liquid.VariableParser);
 
         private readonly ErrorsOutputMode _errorsOutputMode;
@@ -585,23 +606,23 @@ namespace DotLiquid
         {
             object value;
             if (obj is IDictionary dictionaryObj)
-            { 
+            {
                 value = dictionaryObj[key];
             }
             else if (obj is IList listObj)
-            { 
+            {
                 value = listObj[Convert.ToInt32(key)];
             }
             else if (TypeUtility.IsAnonymousType(obj.GetType()))
-            { 
+            {
                 value = obj.GetType().GetRuntimeProperty((string)key).GetValue(obj, null);
             }
             else if (obj is IIndexable indexableObj)
-            { 
+            {
                 value = indexableObj[key];
             }
             else
-            { 
+            {
                 throw new NotSupportedException();
             }
 
@@ -617,11 +638,11 @@ namespace DotLiquid
                     listObj[Convert.ToInt32(key)] = newValue;
                 }
                 else if (TypeUtility.IsAnonymousType(obj.GetType()))
-                { 
+                {
                     obj.GetType().GetRuntimeProperty((string)key).SetValue(obj, newValue, null);
                 }
                 else
-                { 
+                {
                     throw new NotSupportedException();
                 }
                 return newValue;
